@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-URL = 'http://localhost:4005'
+URL = 'http://localhost:4000'
 service = [webdriver.Chrome(service=Service(ChromeDriverManager().install())),
            webdriver.Firefox(service=Service(GeckoDriverManager().install()))]
 
