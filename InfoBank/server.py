@@ -55,7 +55,7 @@ class MyServ(BaseHTTPRequestHandler):
     def do_GET(self):
         time.sleep(2)
         if self.path == '/':
-            self.path = 'index.html'
+            self.path = '/index.html'
         try:
             file_to_open = self.create_page(self.path)
             self._set_response()
@@ -64,7 +64,7 @@ class MyServ(BaseHTTPRequestHandler):
                 file_to_open = get_answer(self.path, bank_attributes, database)
                 self._set_response()
             except AttributeError:
-                self.path = 'error.html'
+                self.path = '/error.html'
                 file_to_open = self.create_page(self.path)
                 self._set_response(404)
         self.wfile.write(file_to_open)

@@ -6,7 +6,7 @@ URL = 'http://localhost:4000'
 
 class Test(unittest.TestCase):
     def test_connection(self):
-        self.assertEqual(str(requests.get(f'{URL}')), '<Response [200]>', 'Connection failed')
+        self.assertEqual(str(requests.get(f'{URL}/')), '<Response [200]>', 'Connection failed')
 
     def test_get_correct_ans_default(self):
         self.assertEqual(requests.get(f'{URL}/201423').json(),
@@ -16,18 +16,22 @@ class Test(unittest.TestCase):
                          'Incorrect answer')
 
     def test_get_incorrect_ans_digit(self):
-        self.assertEqual(str(requests.get(f'{URL}/00000000')), '<Response [404]>', 'Incorrect answer')
+        self.assertEqual(str(requests.get(f'{URL}/00000000')), '<Response [404]>', 'Incorrect code')
 
     def test_get_incorrect_ans_alpha(self):
-        self.assertEqual(str(requests.get(f'{URL}/abcde')), '<Response [404]>', 'Incorrect answer')
+        self.assertEqual(str(requests.get(f'{URL}/abcde')), '<Response [404]>', 'Incorrect code')
 
     def test_get_correct_ans_small(self):
         self.assertEqual(requests.get(f"{URL}/503989").json(), {"Bin": "503989", "Brand": "MAESTRO", "Type": "DEBIT"},
                          'Incorrect answer')
 
     def test_get_correct_ans_space(self):
-        self.assertEqual(requests.get(f"{URL}/5039 8912 3564 1234").json(), {"Bin": "503989", "Brand": "MAESTRO", "Type": "DEBIT"},
+        self.assertEqual(requests.get(f"{URL}/5039 8912 3564 1234").json(),
+                         {"Bin": "503989", "Brand": "MAESTRO", "Type": "DEBIT"},
                          'Incorrect answer')
+
+    def test_get_incorrect_ans_mark(self):
+        self.assertEqual(str(requests.get(f'{URL}/?503999')), "<Response [404]>", 'Incorrect answer')
 
 
 if __name__ == '__main__':
