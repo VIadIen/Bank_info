@@ -13,9 +13,6 @@ service = [webdriver.Chrome(service=Service(ChromeDriverManager().install())),
 
 @pytest.mark.parametrize('browser_type', service)
 class TestInfoBank:
-    def teardown_method(self):
-        self.browser.quit()
-
     def test_end_2_end(self, browser_type):
         self.browser = browser_type
         self.wait = WebDriverWait(self.browser, 15)
@@ -33,4 +30,5 @@ class TestInfoBank:
         self.browser.find_element('id', 'get_info').click()
         status = WebDriverWait(self.browser, 15).until(
             EC.visibility_of_element_located(("tag name", "h1"))).text
+        self.browser.quit()
         assert status == '404 Not Found', 'Incorrect answer!'

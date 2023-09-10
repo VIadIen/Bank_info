@@ -74,7 +74,7 @@ if __name__ == '__main__':
     print("I'm start")
     bank_attributes, database = get_bank_database()
     print("I'm get database")
-    server_addr = ('localhost', 4005)
+    server_addr = ('0.0.0.0', 4005)
     httpd = HTTPServer(server_addr, MyServ)
     print("I'm create server, try connect!")
     while True:
