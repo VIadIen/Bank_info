@@ -16,7 +16,7 @@ A server program that, by card bin number, provides information about the bank t
 
 *Project+tests*
   1) Download the repository: <pre>`git clone https://github.com/VIadIen/TestSberTech.git`</pre>
-  2) Replace the port number from 4005 to 4000 in the "TestSberTech/InfoBank/server.py" file. Run server.py using the <pre>python server.py</pre> The server is available at: `http://localhost:4005/`
+  2) Replace the port number from 4005 to 4000 in the "TestSberTech/InfoBank/server.py" file. Run server.py using the <pre>python server.py</pre> The server is available at: `http://localhost:4000/`
   3) For test:
      - Create virtual environment
      - Download packages from requirements.txt
