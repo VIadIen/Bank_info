@@ -1,4 +1,5 @@
 import re
+from urllib.parse import unquote
 import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
@@ -23,7 +24,8 @@ def get_bank_database():
 
 # Get answer
 def get_answer(card_bin, bank_info, bank_database):
-    card_bin = card_bin.replace('%20', '')
+    card_bin = unquote(card_bin).replace(' ', '')
+    print(card_bin)
     try:
         card_bin = re.search(PATTERN, card_bin).group(0)[1:]
         bank = list(*filter(lambda x: x[0] == card_bin[:8], bank_database)) or \
@@ -52,8 +54,8 @@ class MyServ(BaseHTTPRequestHandler):
         with open(f'{path[1:]}', 'rb') as f:
             return f.read()
 
-    def do_GET(self):
-        time.sleep(2)
+    def do_GET(self):  # make more functional (make API)
+        # time.sleep(2)
         if self.path == '/':
             self.path = '/index.html'
         try:
@@ -74,7 +76,7 @@ if __name__ == '__main__':
     print("I'm start")
     bank_attributes, database = get_bank_database()
     print("I'm get database")
-    server_addr = ('0.0.0.0', 4005)
+    server_addr = ('0.0.0.0', 4000)
     httpd = HTTPServer(server_addr, MyServ)
     print("I'm create server, try connect!")
     while True:

@@ -7,5 +7,5 @@ for (let key in answer) {
     col.innerHTML = key === 'Bank_Url' ? `<a href="http://${answer[key]}" target="_blank">${answer[key]}</a>` : `${answer[key]}`
     document.querySelector('.info_card>tbody>tr').appendChild(col)
 }
-localStorage.clear()
+
 

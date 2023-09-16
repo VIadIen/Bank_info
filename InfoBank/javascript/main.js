@@ -1,4 +1,5 @@
 function getCardInfo() {
+    localStorage.clear()
     let text = document.querySelector("#card_bin").value.replace((/\s/g),'');
     fetch(`${window.location.href}${text}`).then(function (response) {
         return response.json()
