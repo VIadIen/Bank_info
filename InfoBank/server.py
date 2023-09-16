@@ -55,7 +55,7 @@ class MyServ(BaseHTTPRequestHandler):
             return f.read()
 
     def do_GET(self):  # make more functional (make API)
-        # time.sleep(2)
+        time.sleep(2)
         if self.path == '/':
             self.path = '/index.html'
         try:
