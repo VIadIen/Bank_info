@@ -4,7 +4,7 @@ for (let key in answer) {
     let col = document.createElement('td')
     row.innerHTML = `${key}`
     document.querySelector('.info_card>thead>tr').appendChild(row)
-    col.innerHTML = key === 'Bank_Url' ? `<a href="http://${answer[key]}" target="_blank">${answer[key]}</a>` : `${answer[key]}`
+    col.innerHTML = key === 'bank_url' ? `<a href="http://${answer[key]}" target="_blank">${answer[key]}</a>` : `${answer[key]}`
     document.querySelector('.info_card>tbody>tr').appendChild(col)
 }
 
