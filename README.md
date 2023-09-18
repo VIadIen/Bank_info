@@ -1,4 +1,4 @@
-# Test SberTech
+# Bank Info
 
 ### About the project
 
